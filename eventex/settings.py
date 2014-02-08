@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
+import dj_database_url
 from unipath import Path
 BASE_DIR = Path(__file__).parent
 
@@ -55,10 +56,9 @@ WSGI_APPLICATION = 'eventex.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR.child('db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + BASE_DIR.child('db.sqlite3')
+    )
 }
 
 # Internationalization
@@ -77,5 +77,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
+STATIC_ROOT = BASE_DIR.child('staticfiles')
 STATIC_URL = '/static/'
