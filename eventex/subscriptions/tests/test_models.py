@@ -34,7 +34,7 @@ class SubscriptionUniqueTest(TestCase):
 
     def setUp(self):
         # Create a first entry to force the collision
-        Subscription.objects.create(name = 'Henrique Bastos', cpf = '12345678901',
+        self.obj = Subscription.objects.create(name = 'Henrique Bastos', cpf = '12345678901',
                                     email='henrique@bastos.net', phone = '21-96186180')
 
     def test_cpf_unique(self):
@@ -48,3 +48,7 @@ class SubscriptionUniqueTest(TestCase):
         s = Subscription(name = 'Henrique Bastos', cpf = '00000000011',
                          email='henrique@bastos.net', phone = '21-96186180')
         self.assertRaises(IntegrityError, s.save)
+
+    def test_paid_default_value_is_False(self):
+        'By default paid must be False.'
+        self.assertEqual(False, self.obj.paid)

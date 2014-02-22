@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for eventex project.
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
     'eventex.core',
     'eventex.subscriptions',
 )
@@ -55,6 +57,11 @@ ROOT_URLCONF = 'eventex.urls'
 
 WSGI_APPLICATION = 'eventex.wsgi.application'
 
+# Usar o South para preparar o banco nos testes?
+# True: Sim. (default)
+# False: Não! Use o Syncdb
+
+SOUTH_TESTS_MIGRATE = False
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
