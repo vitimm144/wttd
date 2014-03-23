@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'south',
     'eventex.core',
     'eventex.subscriptions',
+    'eventex.myauth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,6 +57,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'eventex.urls'
 
 WSGI_APPLICATION = 'eventex.wsgi.application'
+
+AUTH_USER_MODEL='myauth.User'
 
 # Usar o South para preparar o banco nos testes?
 # True: Sim. (default)
